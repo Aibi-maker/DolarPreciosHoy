@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es" class="dark bg-[#0b0f19]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DolarPreciosHoy - By TahiGonzalez</title>
+    
+    <!-- PWA & Theme -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0b0f19">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -38,64 +41,18 @@
             }
         }
     </script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0b0f19;
-            color: #f3f4f6;
-            overflow-x: hidden;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b0f19;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 9999px;
-            border: 2px solid #0b0f19;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00f2fe;
-        }
-
-        /* Cyberpunk visual touches */
-        .cyber-card {
-            background: linear-gradient(135deg, rgba(17, 24, 39, 0.85) 0%, rgba(11, 15, 25, 0.95) 100%);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .cyber-card:hover {
-            border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.12);
-        }
-
-        .neon-glow-cyan {
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
-        }
-
-        .neon-glow-purple {
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.25);
-        }
-
-        .neon-text-cyan {
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
-        }
-
-        .neon-text-purple {
-            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        html, body {
+            background-color: #0b0f19 !important;
+            color: #ffffff;
+            min-height: 100vh;
         }
 
         .scanline {
@@ -112,7 +69,7 @@
         .gradient-border {
             position: relative;
             border-radius: 1rem;
-            background: linear-gradient(135deg, rgba(0, 242, 254, 0.4), rgba(139, 92, 246, 0.4));
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.4), rgba(139, 92, 246, 0.2), rgba(255, 255, 255, 0.05));
             padding: 1px;
         }
 
@@ -122,612 +79,381 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between scanline relative selection:bg-neon-cyan selection:text-black">
+<body class="bg-[#0b0f19] text-white min-h-screen flex flex-col justify-between scanline relative selection:bg-neon-cyan selection:text-black">
 
     <!-- Ambient background glows -->
-    <div class="fixed -top-40 -left-40 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="fixed top-1/2 -right-40 w-96 h-96 bg-neon-purple/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-neon-purple/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-    <!-- Header Navbar -->
+    <!-- Header -->
     <header class="sticky top-0 z-50 backdrop-blur-xl bg-cyber-950/80 border-b border-cyber-700/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
             <!-- Logo & Brand -->
             <div class="flex items-center space-x-3.5">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-neon-cyan via-blue-600 to-neon-purple flex items-center justify-center shadow-lg shadow-cyan-500/20">
-                    <i class="fa-solid fa-sack-dollar text-slate-950 text-xl font-black"></i>
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-neon-cyan via-blue-600 to-neon-purple flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    <i class="fa-solid font-bold text-cyber-950 text-xl fa-sack-dollar"></i>
                 </div>
                 <div>
                     <div class="flex items-center space-x-2">
-                        <h1 class="font-extrabold text-xl sm:text-2xl tracking-tight bg-gradient-to-r from-neon-cyan via-blue-400 to-neon-purple bg-clip-text text-transparent">
+                        <h1 class="text-2xl font-black tracking-tight bg-gradient-to-r from-neon-cyan via-blue-400 to-neon-purple bg-clip-text text-transparent">
                             DolarPreciosHoy
                         </h1>
-                        <span class="px-2 py-0.5 text-[10px] uppercase font-bold tracking-widest rounded-md bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30">LIVE</span>
+                        <span class="text-[10px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-md bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30">LIVE</span>
                     </div>
-                    <p class="text-xs text-gray-400 font-medium">
-                        Cotizaciones en Argentina & Calculadora Gamer <span class="text-neon-purple font-semibold">By TahiGonzalez</span>
+                    <p class="text-xs text-slate-400 font-medium">
+                        Cotizaciones en Argentina & Calculadora Gamer <span class="text-neon-cyan/80 font-semibold">By TahiGonzalez</span>
                     </p>
                 </div>
             </div>
 
-            <!-- Actions & Status -->
+            <!-- Controls -->
             <div class="flex items-center space-x-3">
-                <div id="liveBadge" class="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-full bg-cyber-800 border border-cyber-700 text-xs text-gray-300">
+                <div id="last-updated" class="hidden sm:flex items-center space-x-2 text-xs font-mono text-slate-400 bg-cyber-800/80 px-3 py-1.5 rounded-lg border border-cyber-700">
                     <span class="w-2 h-2 rounded-full bg-neon-emerald animate-pulse"></span>
-                    <span class="text-gray-400">Actualizado: <strong id="lastUpdateText" class="text-gray-200">Cargando...</strong></span>
+                    <span>Actualizado: <strong id="update-time" class="text-slate-200">--:--:--</strong></span>
                 </div>
-
-                <button onclick="fetchDolarData()" id="refreshBtn" title="Actualizar precios" 
-                    class="px-4 py-2.5 rounded-xl bg-cyber-800 hover:bg-cyber-700 active:scale-95 text-cyan-400 hover:text-cyan-300 transition-all duration-200 border border-cyber-700 hover:border-neon-cyan/50 flex items-center space-x-2 text-sm font-semibold shadow-sm">
-                    <i id="refreshIcon" class="fa-solid fa-arrows-rotate"></i>
-                    <span class="hidden md:inline">Actualizar</span>
+                
+                <button id="refresh-btn" onclick="fetchDollarRates()" class="flex items-center space-x-2 bg-cyber-800 hover:bg-cyber-700 text-neon-cyan border border-neon-cyan/30 hover:border-neon-cyan/60 font-semibold px-4 py-2 rounded-xl text-xs transition-all duration-300 active:scale-95 shadow-md">
+                    <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
+                    <span class="hidden sm:inline">Actualizar</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10 relative z-10">
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10 flex-grow w-full">
 
-        <!-- Notification Banner -->
-        <div id="statusBanner" class="hidden p-4 rounded-2xl border text-sm flex items-center justify-between transition-all duration-300">
-            <div class="flex items-center space-x-3">
-                <i id="statusIcon" class="fa-solid fa-circle-info text-lg"></i>
-                <span id="statusMsg" class="font-medium"></span>
-            </div>
-            <button onclick="hideStatusBanner()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-
-        <!-- SECTION 1: Ticker de Cotizaciones / Tarjetas Grid -->
+        <!-- Rates Section -->
         <section class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                    <h2 class="text-xl font-black tracking-tight text-white flex items-center space-x-2.5">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-chart-line text-neon-cyan"></i>
-                        <span>Cotizaciones del Dólar Hoy</span>
+                        Cotizaciones del Dólar
                     </h2>
-                    <p class="text-xs text-gray-400">Valores del mercado libre, oficial y financiero en tiempo real</p>
+                    <p class="text-xs text-slate-400">Valores del mercado libre, oficial y financiero en tiempo real</p>
                 </div>
-                <div class="flex items-center space-x-2 text-xs text-gray-400">
-                    <span class="px-2 py-1 rounded bg-cyber-800 border border-cyber-700">Fuente: DolarAPI</span>
+                <div class="text-xs font-mono text-slate-400 bg-cyber-800/50 px-3 py-1 rounded-md border border-cyber-700/50 self-start sm:self-auto">
+                    Fuente: DolarAPI
                 </div>
             </div>
 
-            <!-- Rates Grid -->
-            <div id="ratesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-                <!-- Skeletons while loading -->
-                <div class="cyber-card p-5 rounded-2xl animate-pulse space-y-3">
-                    <div class="h-4 bg-cyber-700 rounded w-1/2"></div>
-                    <div class="h-8 bg-cyber-700 rounded w-3/4"></div>
-                    <div class="h-3 bg-cyber-700 rounded w-1/3"></div>
-                </div>
-                <div class="cyber-card p-5 rounded-2xl animate-pulse space-y-3">
-                    <div class="h-4 bg-cyber-700 rounded w-1/2"></div>
-                    <div class="h-8 bg-cyber-700 rounded w-3/4"></div>
-                    <div class="h-3 bg-cyber-700 rounded w-1/3"></div>
-                </div>
-                <div class="cyber-card p-5 rounded-2xl animate-pulse space-y-3">
-                    <div class="h-4 bg-cyber-700 rounded w-1/2"></div>
-                    <div class="h-8 bg-cyber-700 rounded w-3/4"></div>
-                    <div class="h-3 bg-cyber-700 rounded w-1/3"></div>
-                </div>
-                <div class="cyber-card p-5 rounded-2xl animate-pulse space-y-3">
-                    <div class="h-4 bg-cyber-700 rounded w-1/2"></div>
-                    <div class="h-8 bg-cyber-700 rounded w-3/4"></div>
-                    <div class="h-3 bg-cyber-700 rounded w-1/3"></div>
-                </div>
-                <div class="cyber-card p-5 rounded-2xl animate-pulse space-y-3">
-                    <div class="h-4 bg-cyber-700 rounded w-1/2"></div>
-                    <div class="h-8 bg-cyber-700 rounded w-3/4"></div>
-                    <div class="h-3 bg-cyber-700 rounded w-1/3"></div>
-                </div>
-                <div class="cyber-card p-5 rounded-2xl animate-pulse space-y-3">
-                    <div class="h-4 bg-cyber-700 rounded w-1/2"></div>
-                    <div class="h-8 bg-cyber-700 rounded w-3/4"></div>
-                    <div class="h-3 bg-cyber-700 rounded w-1/3"></div>
-                </div>
+            <!-- Cards Grid -->
+            <div id="rates-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <!-- Skeletons placeholders while loading -->
+                <div class="animate-pulse bg-cyber-800/60 rounded-2xl h-36 border border-cyber-700/50"></div>
+                <div class="animate-pulse bg-cyber-800/60 rounded-2xl h-36 border border-cyber-700/50"></div>
+                <div class="animate-pulse bg-cyber-800/60 rounded-2xl h-36 border border-cyber-700/50"></div>
+                <div class="animate-pulse bg-cyber-800/60 rounded-2xl h-36 border border-cyber-700/50"></div>
+                <div class="animate-pulse bg-cyber-800/60 rounded-2xl h-36 border border-cyber-700/50"></div>
+                <div class="animate-pulse bg-cyber-800/60 rounded-2xl h-36 border border-cyber-700/50"></div>
             </div>
         </section>
 
-        <!-- SECTION 2: Calculadora Gamer & Importaciones Digitales -->
+        <!-- Gamer & Card Taxes Calculator -->
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- Left Panel: Calculator Controls -->
-            <div class="lg:col-span-7 cyber-card rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden">
-                <div class="flex items-center justify-between pb-4 border-b border-cyber-700/60">
+            <!-- Left: Inputs & Presets -->
+            <div class="lg:col-span-7 space-y-6 bg-cyber-800/40 p-6 rounded-2xl border border-cyber-700/60 backdrop-blur-md">
+                
+                <div class="flex items-center justify-between border-b border-cyber-700/60 pb-4">
                     <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-neon-purple/10 border border-neon-purple/30 flex items-center justify-center text-neon-purple">
+                        <div class="w-10 h-10 rounded-xl bg-neon-purple/20 border border-neon-purple/40 flex items-center justify-center text-neon-purple">
                             <i class="fa-solid fa-gamepad text-lg"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-extrabold text-white">Calculadora Gamer & Tarjeta</h3>
-                            <p class="text-xs text-gray-400">Steam, PlayStation, Xbox, Epic Games & Suscripciones</p>
+                            <h3 class="text-lg font-bold text-white">Calculadora Gamer & Tarjeta</h3>
+                            <p class="text-xs text-slate-400">Steam, PlayStation, Xbox, Epic Games & Suscripciones</p>
                         </div>
                     </div>
-                    <span class="px-3 py-1 rounded-full bg-neon-purple/10 text-neon-purple border border-neon-purple/30 text-xs font-bold uppercase tracking-wider">
-                        Impuestos Digitales
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-neon-purple/10 text-neon-purple border border-neon-purple/30">
+                        IMPUESTOS DIGITALES
                     </span>
                 </div>
 
-                <!-- Inputs Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    
-                    <!-- USD Amount -->
-                    <div class="space-y-2">
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300">
-                            Precio en Dólares (USD)
-                        </label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-neon-cyan font-extrabold text-lg">$</span>
-                            <input type="number" id="inputUsd" value="19.99" step="0.01" min="0"
-                                class="w-full pl-9 pr-4 py-3.5 bg-cyber-900 border border-cyber-700 rounded-2xl text-white font-mono font-bold text-xl focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all"
-                                placeholder="0.00">
-                        </div>
-                    </div>
-
-                    <!-- Dollar Rate Type -->
-                    <div class="space-y-2">
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300">
-                            Tipo de Cotización Base
-                        </label>
-                        <select id="selectDolarType" class="w-full px-4 py-3.5 bg-cyber-900 border border-cyber-700 rounded-2xl text-white font-semibold text-sm focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
-                            <option value="tarjeta">Dólar Tarjeta / Turista</option>
-                            <option value="oficial">Dólar Oficial Base</option>
-                            <option value="blue">Dólar Blue</option>
-                            <option value="bolsa">Dólar MEP / Bolsa</option>
-                            <option value="cripto">Dólar Cripto (USDT)</option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <!-- Presets for Video Games -->
-                <div class="space-y-2.5">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300">
-                        Presets de Precios Populares (Juegos & Ofertas)
+                <!-- Input Price -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300">
+                        Precio en Dólares (USD)
                     </label>
-                    <div class="grid grid-cols-4 sm:grid-cols-7 gap-2">
-                        <button onclick="setPreset(0.99)" class="px-2.5 py-2 rounded-xl bg-cyber-900 hover:bg-cyber-700 border border-cyber-700 hover:border-neon-cyan text-xs font-mono font-bold text-gray-300 hover:text-white transition">
-                            $0.99
-                        </button>
-                        <button onclick="setPreset(4.99)" class="px-2.5 py-2 rounded-xl bg-cyber-900 hover:bg-cyber-700 border border-cyber-700 hover:border-neon-cyan text-xs font-mono font-bold text-gray-300 hover:text-white transition">
-                            $4.99
-                        </button>
-                        <button onclick="setPreset(9.99)" class="px-2.5 py-2 rounded-xl bg-cyber-900 hover:bg-cyber-700 border border-cyber-700 hover:border-neon-cyan text-xs font-mono font-bold text-gray-300 hover:text-white transition">
-                            $9.99
-                        </button>
-                        <button onclick="setPreset(19.99)" class="px-2.5 py-2 rounded-xl bg-cyber-900 hover:bg-cyber-700 border border-cyber-700 hover:border-neon-cyan text-xs font-mono font-bold text-gray-300 hover:text-white transition">
-                            $19.99
-                        </button>
-                        <button onclick="setPreset(29.99)" class="px-2.5 py-2 rounded-xl bg-cyber-900 hover:bg-cyber-700 border border-cyber-700 hover:border-neon-cyan text-xs font-mono font-bold text-gray-300 hover:text-white transition">
-                            $29.99
-                        </button>
-                        <button onclick="setPreset(59.99)" class="px-2.5 py-2 rounded-xl bg-cyber-900 hover:bg-cyber-700 border border-cyber-700 hover:border-neon-cyan text-xs font-mono font-bold text-gray-300 hover:text-white transition">
-                            $59.99
-                        </button>
-                        <button onclick="setPreset(69.99)" class="px-2.5 py-2 rounded-xl bg-cyber-900 hover:bg-cyber-700 border border-cyber-700 hover:border-neon-cyan text-xs font-mono font-bold text-gray-300 hover:text-white transition">
-                            $69.99
-                        </button>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400 font-bold">$</span>
+                        <input type="number" id="usd-amount" value="19.99" step="0.01" min="0" oninput="calculateGamerPrice()"
+                            class="w-full pl-8 pr-16 py-3.5 bg-cyber-900/90 border border-cyber-700 focus:border-neon-cyan rounded-xl text-xl font-mono font-bold text-white focus:outline-none focus:ring-1 focus:ring-neon-cyan transition-all">
+                        <span class="absolute inset-y-0 right-0 pr-4 flex items-center text-xs font-bold text-slate-500">USD</span>
                     </div>
                 </div>
 
-                <!-- Interactive Tax Toggles -->
-                <div class="p-5 rounded-2xl bg-cyber-900/80 border border-cyber-700/80 space-y-4">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-extrabold uppercase tracking-wider text-cyan-400 flex items-center space-x-2">
-                            <i class="fa-solid fa-sliders"></i>
-                            <span>Configuración de Impuestos Aplicables</span>
-                        </span>
-                        <span id="taxTotalBadge" class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30">
-                            60% Total
-                        </span>
+                <!-- Rate Selector -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300">
+                        Tipo de Cotización Base
+                    </label>
+                    <select id="rate-select" onchange="calculateGamerPrice()"
+                        class="w-full px-4 py-3 bg-cyber-900/90 border border-cyber-700 focus:border-neon-cyan rounded-xl text-sm font-semibold text-slate-200 focus:outline-none focus:ring-1 focus:ring-neon-cyan transition-all">
+                        <option value="tarjeta">Dólar Tarjeta (Recomendado para compras en USD)</option>
+                        <option value="oficial">Dólar Oficial Base</option>
+                        <option value="blue">Dólar Blue</option>
+                        <option value="cripto">Dólar Cripto</option>
+                    </select>
+                </div>
+
+                <!-- Presets -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        Precios Frecuentes
+                    </label>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="setUsdAmount(0.99)" class="px-3 py-1.5 bg-cyber-700/50 hover:bg-cyber-700 text-slate-200 text-xs font-mono font-semibold rounded-lg border border-cyber-600 transition-all">$0.99</button>
+                        <button onclick="setUsdAmount(4.99)" class="px-3 py-1.5 bg-cyber-700/50 hover:bg-cyber-700 text-slate-200 text-xs font-mono font-semibold rounded-lg border border-cyber-600 transition-all">$4.99</button>
+                        <button onclick="setUsdAmount(9.99)" class="px-3 py-1.5 bg-cyber-700/50 hover:bg-cyber-700 text-slate-200 text-xs font-mono font-semibold rounded-lg border border-cyber-600 transition-all">$9.99</button>
+                        <button onclick="setUsdAmount(19.99)" class="px-3 py-1.5 bg-cyber-700/50 hover:bg-cyber-700 text-slate-200 text-xs font-mono font-semibold rounded-lg border border-cyber-600 transition-all">$19.99</button>
+                        <button onclick="setUsdAmount(29.99)" class="px-3 py-1.5 bg-cyber-700/50 hover:bg-cyber-700 text-slate-200 text-xs font-mono font-semibold rounded-lg border border-cyber-600 transition-all">$29.99</button>
+                        <button onclick="setUsdAmount(59.99)" class="px-3 py-1.5 bg-cyber-700/50 hover:bg-cyber-700 text-slate-200 text-xs font-mono font-semibold rounded-lg border border-cyber-600 transition-all">$59.99</button>
+                        <button onclick="setUsdAmount(69.99)" class="px-3 py-1.5 bg-cyber-700/50 hover:bg-cyber-700 text-slate-200 text-xs font-mono font-semibold rounded-lg border border-cyber-600 transition-all">$69.99</button>
                     </div>
+                </div>
 
-                    <div class="space-y-3">
-                        <!-- Toggle IVA 21% -->
-                        <label class="flex items-center justify-between cursor-pointer group p-2 rounded-xl hover:bg-cyber-800/50 transition">
-                            <div class="flex items-center space-x-3">
-                                <input type="checkbox" id="chkIva" checked onchange="calculate()"
-                                    class="w-4 h-4 rounded bg-cyber-950 border-cyber-600 text-neon-cyan focus:ring-neon-cyan focus:ring-offset-cyber-900 accent-cyan-400">
-                                <div>
-                                    <span class="text-sm font-semibold text-gray-200 group-hover:text-white">IVA Servicios Digitales (21%)</span>
-                                    <p class="text-[11px] text-gray-400">Aplica a compras en plataformas digitales del exterior</p>
-                                </div>
-                            </div>
-                            <span class="font-mono text-xs font-bold text-neon-cyan">+21%</span>
-                        </label>
+                <!-- Tax Checkboxes -->
+                <div class="space-y-3 pt-2">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300">
+                        Impuestos Aplicados
+                    </label>
 
-                        <!-- Percepciones Adicionales -->
-                        <div class="pt-2 border-t border-cyber-700/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div class="flex items-center justify-between p-3 bg-cyber-900/60 rounded-xl border border-cyber-700">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="tax-iva" checked onchange="calculateGamerPrice()" class="w-4 h-4 text-neon-cyan bg-cyber-800 border-cyber-600 rounded focus:ring-neon-cyan">
                             <div>
-                                <span class="text-sm font-semibold text-gray-200">Percepciones Adicionales / Percepción País</span>
-                                <p class="text-[11px] text-gray-400">Personaliza el porcentaje según tus retenciones habituales</p>
+                                <span class="text-sm font-semibold text-white">IVA Servicios Digitales (21%)</span>
+                                <p class="text-[11px] text-slate-400">Aplica a plataformas de entretenimiento digital</p>
                             </div>
-                            <div class="flex items-center space-x-2">
-                                <input type="number" id="inputExtraTax" value="30" min="0" max="100" oninput="calculate()"
-                                    class="w-20 px-3 py-1.5 bg-cyber-950 border border-cyber-700 rounded-xl text-center font-mono font-bold text-white text-sm focus:outline-none focus:border-neon-purple">
-                                <span class="text-xs text-gray-400 font-bold">%</span>
+                        </div>
+                        <span class="text-xs font-mono font-bold text-neon-cyan">+21%</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 bg-cyber-900/60 rounded-xl border border-cyber-700">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="tax-extra" onchange="calculateGamerPrice()" class="w-4 h-4 text-neon-purple bg-cyber-800 border-cyber-600 rounded focus:ring-neon-purple">
+                            <div>
+                                <span class="text-sm font-semibold text-white">Percepciones Adicionales / Provincia</span>
+                                <p class="text-[11px] text-slate-400">Ingresos brutos / Sellos locales si aplica</p>
                             </div>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <span class="text-xs text-slate-400">+</span>
+                            <input type="number" id="tax-extra-percent" value="9" min="0" max="100" oninput="calculateGamerPrice()" class="w-12 px-1 py-0.5 bg-cyber-800 border border-cyber-600 rounded text-center text-xs font-mono font-bold text-white">
+                            <span class="text-xs text-slate-400">%</span>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Right Panel: Transparent Breakdown Result -->
+            <!-- Right: Result Card -->
             <div class="lg:col-span-5 gradient-border shadow-2xl">
-                <div class="gradient-border-inner p-6 sm:p-8 space-y-6 relative overflow-hidden h-full flex flex-col justify-between">
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-center justify-between pb-4 border-b border-cyber-700/60">
-                            <span class="text-xs font-extrabold uppercase tracking-widest text-gray-400 flex items-center space-x-2">
-                                <i class="fa-solid fa-receipt text-neon-cyan"></i>
-                                <span>Resumen de la Operación</span>
-                            </span>
-                            <span class="text-[11px] text-gray-400">Valores finales estimados</span>
+                <div class="gradient-border-inner p-6 space-y-6">
+                    <div class="flex items-center justify-between border-b border-cyber-700/60 pb-4">
+                        <span class="text-xs font-bold uppercase tracking-widest text-neon-cyan flex items-center gap-2">
+                            <i class="fa-solid fa-receipt"></i>
+                            Resumen de la Operación
+                        </span>
+                        <span class="text-[11px] text-slate-400">Valores finales estimados</span>
+                    </div>
+
+                    <!-- Main Price Display -->
+                    <div class="text-center py-4 bg-cyber-900/80 rounded-2xl border border-cyber-700/80 space-y-1">
+                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Final a Pagar</span>
+                        <div class="text-4xl sm:text-5xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-white to-neon-purple" id="calc-total-ars">
+                            $0,00
                         </div>
+                        <span class="text-xs font-mono text-slate-400">Pesos Argentinos (ARS)</span>
+                    </div>
 
-                        <!-- Big Result Display -->
-                        <div class="p-6 rounded-2xl bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-transparent border border-neon-cyan/30 text-center relative overflow-hidden">
-                            <span class="text-xs font-bold uppercase tracking-widest text-neon-cyan block mb-1">Total Final a Pagar</span>
-                            <div id="resTotalArs" class="text-4xl sm:text-5xl font-black font-mono text-white tracking-tight my-2 neon-text-cyan">
-                                $0,00
-                            </div>
-                            <span id="resTotalUsdSubtitle" class="text-xs text-gray-400 font-medium">
-                                Para un juego de USD $19.99
-                            </span>
+                    <!-- Breakdown Table -->
+                    <div class="space-y-2.5 font-mono text-xs">
+                        <div class="flex justify-between text-slate-300 pb-2 border-b border-cyber-700/40">
+                            <span>Monto Original:</span>
+                            <span class="font-bold text-white" id="calc-usd-base">$0.00 USD</span>
                         </div>
-
-                        <!-- Itemized Breakdown Table -->
-                        <div class="space-y-3 font-mono text-xs sm:text-sm">
-                            <div class="flex justify-between items-center py-2 border-b border-cyber-700/40">
-                                <span class="text-gray-400 font-sans">Precio Base (USD):</span>
-                                <span id="resBaseUsd" class="font-bold text-white">USD $19.99</span>
-                            </div>
-
-                            <div class="flex justify-between items-center py-2 border-b border-cyber-700/40">
-                                <span class="text-gray-400 font-sans">Cotización Utilizada:</span>
-                                <span id="resDolarRate" class="font-bold text-white">$0,00 ARS</span>
-                            </div>
-
-                            <div class="flex justify-between items-center py-2 border-b border-cyber-700/40">
-                                <span class="text-gray-400 font-sans">Monto Puro Conversión:</span>
-                                <span id="resSubtotalArs" class="font-bold text-gray-200">$0,00</span>
-                            </div>
-
-                            <div class="flex justify-between items-center py-2 border-b border-cyber-700/40">
-                                <span class="text-gray-400 font-sans flex items-center space-x-1">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-neon-cyan"></span>
-                                    <span>IVA Servicios Digitales (21%):</span>
-                                </span>
-                                <span id="resIvaArs" class="font-bold text-neon-cyan">+$0,00</span>
-                            </div>
-
-                            <div class="flex justify-between items-center py-2 border-b border-cyber-700/40">
-                                <span class="text-gray-400 font-sans flex items-center space-x-1">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-neon-purple"></span>
-                                    <span>Percepciones Extra:</span>
-                                </span>
-                                <span id="resExtraArs" class="font-bold text-neon-purple">+$0,00</span>
-                            </div>
+                        <div class="flex justify-between text-slate-300 pb-2 border-b border-cyber-700/40">
+                            <span>Cotización Aplicada:</span>
+                            <span class="font-bold text-white" id="calc-rate-applied">$0,00 ARS</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300 pb-2 border-b border-cyber-700/40">
+                            <span>Subtotal Base ARS:</span>
+                            <span class="font-bold text-white" id="calc-base-ars">$0,00 ARS</span>
+                        </div>
+                        <div class="flex justify-between text-neon-cyan pb-2 border-b border-cyber-700/40">
+                            <span>IVA Digital (21%):</span>
+                            <span class="font-bold" id="calc-iva-ars">+$0,00 ARS</span>
+                        </div>
+                        <div class="flex justify-between text-neon-purple pb-2 border-b border-cyber-700/40">
+                            <span>Percepciones Extra:</span>
+                            <span class="font-bold" id="calc-extra-ars">+$0,00 ARS</span>
                         </div>
                     </div>
 
-                    <div class="mt-6 pt-4 border-t border-cyber-700/50 flex items-start space-x-2.5 text-xs text-gray-400">
-                        <i class="fa-solid fa-circle-exclamation text-amber-400 mt-0.5"></i>
-                        <span>El precio final reflejado en la tarjeta o resumen bancario puede tener pequeñas diferencias según la fecha de cierre de tu tarjeta de crédito o débito.</span>
+                    <!-- Tip Note -->
+                    <div class="p-3 bg-cyber-900/60 rounded-xl border border-cyber-700/50 flex items-start space-x-2 text-[11px] text-slate-400">
+                        <i class="fa-solid fa-circle-info text-neon-cyan mt-0.5"></i>
+                        <span>El monto reflejado en el resumen de tu tarjeta o banco puede variar levemente dependiendo de la fecha de cierre de la tarjeta.</span>
                     </div>
-
                 </div>
             </div>
 
-        </section>
-
-        <!-- SECTION 3: Estado de Salud del Mercado & Variaciones -->
-        <section class="cyber-card p-6 sm:p-8 rounded-3xl space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-cyber-700/60">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-neon-emerald/10 border border-neon-emerald/30 flex items-center justify-center text-neon-emerald">
-                        <i class="fa-solid fa-heart-pulse text-lg"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-extrabold text-white">Simulador de Variaciones & Salud del Mercado</h3>
-                        <p class="text-xs text-gray-400">Monitoreo de movimientos de subidas 🟢 y bajas 🔴 del tipo de cambio</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center space-x-2">
-                    <span id="marketHealthBadge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center space-x-1.5">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span>Mercado Estable</span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- Fluctuation Cards -->
-            <div id="variationGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- Dynamically populated -->
-            </div>
         </section>
 
     </main>
 
-    <!-- Footer with Author Signature -->
-    <footer class="mt-16 border-t border-cyber-700/60 bg-cyber-950/90 py-8 text-xs text-gray-400 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            
-            <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-neon-cyan to-neon-purple flex items-center justify-center text-slate-950 font-black text-sm">
-                    D
-                </div>
-                <div>
-                    <p class="font-bold text-gray-200">DolarPreciosHoy &copy; 2026</p>
-                    <p class="text-[11px] text-gray-400">Seguimiento de divisas e impuestos de gaming en Argentina</p>
-                </div>
+    <!-- Footer -->
+    <footer class="border-t border-cyber-700/50 bg-cyber-950/90 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-slate-200">DolarPreciosHoy</span>
+                <span>•</span>
+                <span class="text-neon-cyan font-semibold">By TahiGonzalez</span>
             </div>
-
-            <!-- Author Signature -->
-            <div class="flex items-center space-x-2 px-4 py-2 rounded-2xl bg-cyber-900 border border-cyber-700/80 text-gray-300">
-                <i class="fa-solid fa-code text-neon-cyan"></i>
-                <span>Desarrollado con <i class="fa-solid fa-heart text-rose-500 mx-0.5"></i></span>
-                <span class="font-extrabold text-white bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">By TahiGonzalez</span>
+            <div class="text-slate-500 text-center sm:text-right">
+                Datos provistos en tiempo real vía DolarAPI.com
             </div>
-
-            <div class="flex items-center space-x-4 text-gray-400">
-                <span class="flex items-center space-x-1">
-                    <i class="fa-solid fa-wifi text-emerald-400 text-[10px]"></i>
-                    <span>DolarAPI Sync</span>
-                </span>
-            </div>
-
         </div>
     </footer>
 
-    <!-- JavaScript Application Logic -->
+    <!-- Application Script -->
     <script>
-        // Global state storage
-        let ratesCache = {};
+        let cachedRates = {};
 
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchDolarData();
-
-            // Event Listeners for Calculator
-            document.getElementById('inputUsd').addEventListener('input', calculate);
-            document.getElementById('selectDolarType').addEventListener('change', calculate);
-        });
-
-        // Fetch rates from DolarAPI
-        async function fetchDolarData() {
-            const refreshBtn = document.getElementById('refreshBtn');
-            const refreshIcon = document.getElementById('refreshIcon');
-            
+        async function fetchDollarRates() {
+            const refreshIcon = document.getElementById('refresh-icon');
             refreshIcon.classList.add('fa-spin');
-            showStatus('Obteniendo últimas cotizaciones en tiempo real...', 'info');
 
             try {
                 const response = await fetch('https://dolarapi.com/v1/dolares');
-                if (!response.ok) throw new Error('No se pudo establecer conexión con la API');
-                
                 const data = await response.json();
                 
-                // Process and map API responses
-                ratesCache = {};
+                // Index data by casa
+                cachedRates = {};
                 data.forEach(item => {
-                    ratesCache[item.casa] = item;
+                    cachedRates[item.casa] = item;
                 });
 
+                // Compute Tarjeta Rate if not provided
+                if (cachedRates['oficial']) {
+                    const oficialVenta = cachedRates['oficial'].venta;
+                    cachedRates['tarjeta'] = {
+                        casa: 'tarjeta',
+                        nombre: 'Tarjeta',
+                        compra: cachedRates['oficial'].compra,
+                        venta: oficialVenta * 1.30, // Estimación Dólar Tarjeta
+                        fechaActualizacion: cachedRates['oficial'].fechaActualizacion
+                    };
+                }
+
                 renderRatesGrid(data);
-                renderVariationGrid(data);
-                updateTimestamp();
-                calculate();
-                showStatus('Cotizaciones actualizadas correctamente.', 'success');
+                calculateGamerPrice();
+
+                const now = new Date();
+                document.getElementById('update-time').innerText = now.toLocaleTimeString('es-AR');
 
             } catch (error) {
-                console.error('Error fetching data:', error);
-                showStatus('Atención: Usando valores de respaldo por problemas de red con la API.', 'warning');
-                loadFallbackData();
+                console.error("Error al obtener las cotizaciones:", error);
             } finally {
-                refreshIcon.classList.remove('fa-spin');
+                setTimeout(() => {
+                    refreshIcon.classList.remove('fa-spin');
+                }, 500);
             }
         }
 
-        // Render Rates Cards
-        function renderRatesGrid(rates) {
-            const grid = document.getElementById('ratesGrid');
+        function renderRatesGrid(data) {
+            const grid = document.getElementById('rates-grid');
             grid.innerHTML = '';
 
-            const keyOrder = ['tarjeta', 'blue', 'oficial', 'bolsa', 'contadoconliqui', 'cripto'];
+            // Order of casas to display
+            const targetCasas = ['tarjeta', 'blue', 'oficial', 'bolsa', 'contadoconliquidacion', 'cripto', 'mayorista'];
 
-            // Sort rates according to preferred order
-            rates.sort((a, b) => {
-                let idxA = keyOrder.indexOf(a.casa);
-                let idxB = keyOrder.indexOf(b.casa);
-                return (idxA === -1 ? 99 : idxA) - (idxB === -1 ? 99 : idxB);
-            });
+            targetCasas.forEach(casaKey => {
+                const item = cachedRates[casaKey];
+                if (!item) return;
 
-            rates.forEach(item => {
-                if (!item.venta) return;
+                // Simulate random small variation percentage for badge
+                const isUp = Math.random() > 0.4;
+                const variation = (Math.random() * 0.8).toFixed(2);
+                const badgeClass = isUp ? 'bg-neon-emerald/10 text-neon-emerald border-neon-emerald/30' : 'bg-neon-red/10 text-neon-red border-neon-red/30';
+                const badgeIcon = isUp ? 'fa-caret-up' : 'fa-caret-down';
 
-                // Dynamic mock variations for visual feedback
-                const variation = (Math.sin(item.venta * 0.05) * 0.75).toFixed(2);
-                const isPositive = variation >= 0;
-
-                const card = document.createElement('div');
-                card.className = "cyber-card p-4 rounded-2xl flex flex-col justify-between group hover:border-neon-cyan/50 transition duration-300";
-                
-                card.innerHTML = `
-                    <div>
+                const cardHtml = `
+                    <div class="bg-cyber-800/60 hover:bg-cyber-800 border border-cyber-700/60 hover:border-neon-cyan/40 p-4 rounded-2xl transition-all duration-300 flex flex-col justify-between group shadow-lg">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-extrabold uppercase tracking-wider text-gray-400 group-hover:text-neon-cyan transition">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 group-hover:text-neon-cyan transition-colors">
                                 ${item.nombre}
                             </span>
-                            <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold ${isPositive ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-rose-500/10 text-rose-400 border border-rose-500/30'}">
-                                ${isPositive ? '▲ +' : '▼ '}${variation}%
+                            <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border ${badgeClass} flex items-center gap-1">
+                                <i class="fa-solid ${badgeIcon}"></i>
+                                ${isUp ? '+' : '-'}${variation}%
                             </span>
                         </div>
-                        <div class="my-2">
+                        <div class="my-1">
                             <div class="text-2xl font-black font-mono text-white tracking-tight">
-                                $${formatMoney(item.venta)}
+                                $${item.venta.toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
                             </div>
-                            <div class="flex items-center justify-between text-xs text-gray-400 mt-2 font-mono">
-                                <span>Compra: $${item.compra ? formatMoney(item.compra) : '-'}</span>
-                            </div>
+                            ${item.compra ? `<div class="text-[11px] font-mono text-slate-400">Compra: $${item.compra.toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>` : ''}
                         </div>
+                        <button onclick="selectRateForCalc('${casaKey}')" class="mt-3 w-full py-1.5 bg-cyber-700/50 hover:bg-neon-cyan hover:text-cyber-950 text-slate-300 text-[11px] font-semibold rounded-lg border border-cyber-600/60 transition-all duration-200">
+                            Usar en Calculadora
+                        </button>
                     </div>
-                    <button onclick="selectRateForCalc('${item.casa}')" class="mt-3 w-full py-1.5 rounded-xl bg-cyber-900 group-hover:bg-neon-cyan/10 border border-cyber-700 group-hover:border-neon-cyan/40 text-[11px] font-bold text-gray-300 group-hover:text-neon-cyan transition text-center">
-                        Usar en Calculadora
-                    </button>
                 `;
-                grid.appendChild(card);
+                grid.innerHTML += cardHtml;
             });
         }
 
-        // Render Fluctuation & Health Panel
-        function renderVariationGrid(rates) {
-            const grid = document.getElementById('variationGrid');
-            grid.innerHTML = '';
-
-            const featured = rates.filter(r => ['blue', 'tarjeta', 'bolsa'].includes(r.casa));
-
-            featured.forEach(r => {
-                const isUp = (r.venta % 2 === 0);
-                const pct = (0.3 + (r.venta % 5) * 0.15).toFixed(2);
-
-                const card = document.createElement('div');
-                card.className = "p-4 rounded-2xl bg-cyber-900/60 border border-cyber-700/60 flex items-center justify-between";
-                card.innerHTML = `
-                    <div class="flex items-center space-x-3">
-                        <div class="w-9 h-9 rounded-xl ${isUp ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-rose-500/10 text-rose-400 border border-rose-500/30'} flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-arrow-${isUp ? 'trend-up' : 'trend-down'}"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs font-bold text-gray-300 block">Dólar ${r.nombre}</span>
-                            <span class="text-xs text-gray-400 font-mono">$${formatMoney(r.venta)}</span>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <span class="text-xs font-mono font-bold ${isUp ? 'text-emerald-400' : 'text-rose-400'} block">
-                            ${isUp ? 'Subió 🟢' : 'Bajó 🔴'}
-                        </span>
-                        <span class="text-[11px] text-gray-400 font-mono">${isUp ? '+' : '-'}${pct}% hoy</span>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
+        function setUsdAmount(val) {
+            document.getElementById('usd-amount').value = val;
+            calculateGamerPrice();
         }
 
-        // Set preset value
-        function setPreset(val) {
-            document.getElementById('inputUsd').value = val;
-            calculate();
-        }
-
-        // Select rate from card directly
         function selectRateForCalc(casaKey) {
-            const select = document.getElementById('selectDolarType');
-            for(let i=0; i<select.options.length; i++) {
-                if(select.options[i].value === casaKey) {
-                    select.selectedIndex = i;
-                    break;
-                }
-            }
-            calculate();
-            
-            // Scroll smoothly to calculator
-            document.querySelector('.gradient-border').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Main Calculator Engine
-        function calculate() {
-            const usdInput = parseFloat(document.getElementById('inputUsd').value) || 0;
-            const dolarType = document.getElementById('selectDolarType').value;
-            
-            const isIvaChecked = document.getElementById('chkIva').checked;
-            const extraTaxPct = parseFloat(document.getElementById('inputExtraTax').value) || 0;
-
-            const ivaPct = isIvaChecked ? 21 : 0;
-            const totalTaxPct = ivaPct + extraTaxPct;
-
-            // Update badge total percentage
-            document.getElementById('taxTotalBadge').innerText = `${totalTaxPct}% Total`;
-
-            // Lookup rate
-            let rateObj = ratesCache[dolarType] || ratesCache['tarjeta'] || ratesCache['oficial'] || { venta: 1400 };
-            let baseRate = rateObj.venta || 1400;
-
-            // Compute subtotal and taxes
-            let subtotalArs = usdInput * baseRate;
-            let ivaArs = subtotalArs * (ivaPct / 100);
-            let extraArs = subtotalArs * (extraTaxPct / 100);
-            let totalArs = subtotalArs + ivaArs + extraArs;
-
-            // Render Output
-            document.getElementById('resTotalArs').innerText = `$${formatMoney(totalArs)}`;
-            document.getElementById('resTotalUsdSubtitle').innerText = `Para un monto de USD $${usdInput.toFixed(2)}`;
-            document.getElementById('resBaseUsd').innerText = `USD $${usdInput.toFixed(2)}`;
-            document.getElementById('resDolarRate').innerText = `$${formatMoney(baseRate)} ARS`;
-            document.getElementById('resSubtotalArs').innerText = `$${formatMoney(subtotalArs)}`;
-            document.getElementById('resIvaArs').innerText = `+$${formatMoney(ivaArs)}`;
-            document.getElementById('resExtraArs').innerText = `+$${formatMoney(extraArs)}`;
-        }
-
-        // Helper formatting functions
-        function formatMoney(num) {
-            return num.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
-
-        function updateTimestamp() {
-            const now = new Date();
-            const timeStr = now.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            document.getElementById('lastUpdateText').innerText = timeStr;
-        }
-
-        function showStatus(msg, type) {
-            const banner = document.getElementById('statusBanner');
-            const statusMsg = document.getElementById('statusMsg');
-            const statusIcon = document.getElementById('statusIcon');
-
-            banner.classList.remove('hidden', 'bg-emerald-500/10', 'border-emerald-500/30', 'text-emerald-400', 'bg-rose-500/10', 'border-rose-500/30', 'text-rose-400', 'bg-cyan-500/10', 'border-cyan-500/30', 'text-cyan-400', 'bg-amber-500/10', 'border-amber-500/30', 'text-amber-400');
-
-            if (type === 'success') {
-                banner.classList.add('bg-emerald-500/10', 'border-emerald-500/30', 'text-emerald-400');
-                statusIcon.className = 'fa-solid fa-circle-check text-lg';
-            } else if (type === 'warning') {
-                banner.classList.add('bg-amber-500/10', 'border-amber-500/30', 'text-amber-400');
-                statusIcon.className = 'fa-solid fa-triangle-exclamation text-lg';
+            const select = document.getElementById('rate-select');
+            if (select.querySelector(`option[value="${casaKey}"]`)) {
+                select.value = casaKey;
             } else {
-                banner.classList.add('bg-cyan-500/10', 'border-cyan-500/30', 'text-cyan-400');
-                statusIcon.className = 'fa-solid fa-circle-info text-lg';
+                select.value = 'oficial';
+            }
+            calculateGamerPrice();
+        }
+
+        function calculateGamerPrice() {
+            const usdAmount = parseFloat(document.getElementById('usd-amount').value) || 0;
+            const selectedRateKey = document.getElementById('rate-select').value;
+            const hasIva = document.getElementById('tax-iva').checked;
+            const hasExtra = document.getElementById('tax-extra').checked;
+            const extraPercent = parseFloat(document.getElementById('tax-extra-percent').value) || 0;
+
+            let rateValue = 1000; // Fallback
+            if (cachedRates[selectedRateKey]) {
+                rateValue = cachedRates[selectedRateKey].venta;
             }
 
-            statusMsg.innerText = msg;
+            const baseArs = usdAmount * rateValue;
+            const ivaArs = hasIva ? baseArs * 0.21 : 0;
+            const extraArs = hasExtra ? baseArs * (extraPercent / 100) : 0;
+            const totalArs = baseArs + ivaArs + extraArs;
 
-            if (type === 'success') {
-                setTimeout(() => { hideStatusBanner(); }, 4000);
-            }
+            // Render Results
+            document.getElementById('calc-usd-base').innerText = `$${usdAmount.toFixed(2)} USD`;
+            document.getElementById('calc-rate-applied').innerText = `$${rateValue.toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ARS`;
+            document.getElementById('calc-base-ars').innerText = `$${baseArs.toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ARS`;
+            document.getElementById('calc-iva-ars').innerText = `+$${ivaArs.toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ARS`;
+            document.getElementById('calc-extra-ars').innerText = `+$${extraArs.toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ARS`;
+            document.getElementById('calc-total-ars').innerText = `$${totalArs.toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         }
 
-        function hideStatusBanner() {
-            document.getElementById('statusBanner').classList.add('hidden');
-        }
-
-        // Offline fallback data
-        function loadFallbackData() {
-            const fallback = [
-                { casa: 'oficial', nombre: 'Oficial', compra: 1010, venta: 1050 },
-                { casa: 'tarjeta', nombre: 'Tarjeta', compra: 1050, venta: 1470 },
-                { casa: 'blue', nombre: 'Blue', compra: 1180, venta: 1200 },
-                { casa: 'bolsa', nombre: 'MEP / Bolsa', compra: 1150, venta: 1160 },
-                { casa: 'contadoconliqui', nombre: 'CCL', compra: 1185, venta: 1195 },
-                { casa: 'cripto', nombre: 'Cripto', compra: 1190, venta: 1205 }
-            ];
-
-            ratesCache = {};
-            fallback.forEach(item => { ratesCache[item.casa] = item; });
-            renderRatesGrid(fallback);
-            renderVariationGrid(fallback);
-            calculate();
-        }
+        // Initial Load
+        fetchDollarRates();
+        // Auto refresh every 3 minutes
+        setInterval(fetchDollarRates, 180000);
     </script>
 </body>
 </html>
